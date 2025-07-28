@@ -1,0 +1,587 @@
+.leaderboard {
+  position: absolute;
+  top: 80px;
+  left: 20px;
+  width: 380px;
+  max-height: calc(100vh - 120px);
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(87, 139, 250, 0.05) 100%);
+  border: 2px solid;
+  border-image: linear-gradient(135deg, #578bfa 0%, #FFCF30 100%) 1;
+  border-radius: 12px;
+  padding: 20px;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(87, 139, 250, 0.2);
+  animation: slideIn 0.5s ease-out;
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.header {
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid;
+  border-image: linear-gradient(90deg, #578bfa 0%, #FFCF30 100%) 1;
+  flex-shrink: 0;
+}
+
+.titleRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 600;
+  background: linear-gradient(90deg, #578bfa 0%, #FFCF30 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', 'SF Pro Display', sans-serif;
+  letter-spacing: -0.01em;
+}
+
+.toggleButton {
+  background: rgba(87, 139, 250, 0.1);
+  border: 1px solid rgba(87, 139, 250, 0.3);
+  color: #578bfa;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.toggleButton:hover {
+  background: rgba(87, 139, 250, 0.2);
+  border-color: rgba(87, 139, 250, 0.5);
+}
+
+.subtitle {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 5px;
+  margin-bottom: 15px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+  font-weight: 400;
+}
+
+/* Search functionality */
+.searchContainer {
+  position: relative;
+  margin-top: 10px;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 8px 35px 8px 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(87, 139, 250, 0.3);
+  border-radius: 8px;
+  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.searchInput:focus {
+  border-color: rgba(87, 139, 250, 0.6);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 10px rgba(87, 139, 250, 0.2);
+}
+
+.searchInput::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.searchIcon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 12px;
+}
+
+.table {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', 'SF Pro Display', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.tableHeader {
+  display: grid;
+  grid-template-columns: 30px 80px 60px 70px 40px;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(87, 139, 250, 0.3);
+  background: linear-gradient(90deg, rgba(87, 139, 250, 0.1) 0%, rgba(255, 207, 48, 0.1) 100%);
+  margin: 0 -20px 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: #578bfa;
+  font-weight: 600;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', 'SF Pro Display', sans-serif;
+  letter-spacing: -0.01em;
+}
+
+.sortable {
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.2s ease;
+}
+
+.sortable:hover {
+  color: #FFCF30;
+}
+
+.tableBody {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.tableBody::-webkit-scrollbar {
+  width: 4px;
+}
+
+.tableBody::-webkit-scrollbar-track {
+  background: rgba(87, 139, 250, 0.1);
+}
+
+.tableBody::-webkit-scrollbar-thumb {
+  background: rgba(87, 139, 250, 0.3);
+  border-radius: 2px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 30px 80px 60px 70px 40px;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(87, 139, 250, 0.1);
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.row::before {
+  content: '';
+  position: absolute;
+  left: -20px;
+  right: -20px;
+  top: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255, 207, 48, 0.05) 50%, 
+    transparent 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.row:hover::before {
+  opacity: 1;
+}
+
+.row:hover {
+  padding-left: 5px;
+}
+
+/* Clickable and selected row styles */
+.clickableRow {
+  cursor: pointer;
+  user-select: none;
+}
+
+.clickableRow:hover {
+  background: linear-gradient(90deg, 
+    rgba(87, 139, 250, 0.1) 0%, 
+    rgba(255, 207, 48, 0.05) 50%, 
+    rgba(87, 139, 250, 0.1) 100%);
+  transform: translateX(3px);
+}
+
+.selectedRow {
+  background: linear-gradient(90deg, 
+    rgba(87, 139, 250, 0.15) 0%, 
+    rgba(255, 207, 48, 0.08) 50%, 
+    rgba(87, 139, 250, 0.15) 100%);
+  border-left: 3px solid #578bfa;
+  padding-left: 2px;
+}
+
+.selectedRow::before {
+  opacity: 1;
+  background: linear-gradient(90deg, 
+    rgba(87, 139, 250, 0.2) 0%, 
+    rgba(255, 207, 48, 0.1) 50%, 
+    rgba(87, 139, 250, 0.2) 100%);
+}
+
+.rank {
+  color: #FFCF30;
+  text-align: center;
+}
+
+.symbol {
+  color: #fff;
+  font-weight: bold;
+}
+
+.grade {
+  color: #578bfa;
+  text-align: right;
+}
+
+.change {
+  text-align: right;
+}
+
+.positive {
+  color: #00ff00;
+}
+
+.negative {
+  color: #ff4444;
+}
+
+.neutral {
+  color: #888;
+}
+
+.report {
+  text-align: center;
+}
+
+.aiButton {
+  background: rgba(255, 207, 48, 0.1);
+  border: 1px solid rgba(255, 207, 48, 0.3);
+  border-radius: 4px;
+  padding: 2px 6px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.2s ease;
+  color: #fff;
+}
+
+.aiButton:hover {
+  background: rgba(255, 207, 48, 0.2);
+  border-color: rgba(255, 207, 48, 0.5);
+  transform: scale(1.1);
+}
+
+/* Loading spinner */
+.loadingSpinner {
+  display: inline-block;
+  margin-left: 5px;
+  animation: spin 1s linear infinite;
+  color: #578bfa;
+  font-size: 10px;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Empty states */
+.emptyState {
+  text-align: center;
+  padding: 40px 20px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.emptyIcon {
+  font-size: 24px;
+  margin-bottom: 10px;
+  opacity: 0.7;
+}
+
+.emptyText {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 5px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+}
+
+.emptySubtext {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+  font-weight: 400;
+}
+
+/* AI Report Section */
+.aiReportSection {
+  background: rgba(87, 139, 250, 0.05);
+  border: 1px solid rgba(87, 139, 250, 0.2);
+  border-radius: 8px;
+  margin: 5px 0 10px;
+  animation: expandIn 0.3s ease-out;
+}
+
+.aiReportHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  border-bottom: 1px solid rgba(87, 139, 250, 0.2);
+  background: rgba(87, 139, 250, 0.1);
+}
+
+.aiReportTitle {
+  font-size: 12px;
+  font-weight: 500;
+  color: #FFCF30;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+  letter-spacing: -0.01em;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  font-size: 14px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.closeButton:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.aiReportContent {
+  padding: 15px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.aiReportContent::-webkit-scrollbar {
+  width: 3px;
+}
+
+.aiReportContent::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.aiReportContent::-webkit-scrollbar-thumb {
+  background: rgba(87, 139, 250, 0.3);
+  border-radius: 2px;
+}
+
+.loadingState {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 12px;
+  padding: 10px;
+}
+
+.reportText {
+  font-size: 12px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+  font-weight: 400;
+}
+
+.reportText h1, .reportText h2, .reportText h3 {
+  color: #FFCF30;
+  margin: 1rem 0 0.5rem 0;
+  font-weight: 600;
+}
+
+.reportText h1 {
+  font-size: 1.1rem;
+  border-bottom: 1px solid rgba(87, 139, 250, 0.3);
+  padding-bottom: 0.3rem;
+}
+
+.reportText h2 {
+  font-size: 1rem;
+  color: #578bfa;
+}
+
+.reportText h3 {
+  font-size: 0.9rem;
+}
+
+.reportText p {
+  margin: 0.5rem 0;
+}
+
+.reportText ul, .reportText ol {
+  margin: 0.5rem 0;
+  padding-left: 1.2rem;
+}
+
+.reportText li {
+  margin: 0.3rem 0;
+}
+
+.reportText strong {
+  color: #FFCF30;
+  font-weight: 600;
+}
+
+.reportText code {
+  background: rgba(87, 139, 250, 0.1);
+  color: #578bfa;
+  padding: 0.1rem 0.3rem;
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+
+.streamingCursor {
+  color: #578bfa;
+  animation: blink 1s infinite;
+  font-weight: bold;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.noReport {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.5);
+  font-style: italic;
+  text-align: center;
+  padding: 10px;
+}
+
+@keyframes expandIn {
+  from {
+    opacity: 0;
+    max-height: 0;
+    transform: scaleY(0);
+  }
+  to {
+    opacity: 1;
+    max-height: 300px;
+    transform: scaleY(1);
+  }
+}
+
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .leaderboard {
+    width: 340px;
+    left: 10px;
+    top: 120px;
+    max-height: calc(100vh - 140px);
+    padding: 15px;
+  }
+  
+  .header {
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+  }
+  
+  .title {
+    font-size: 16px;
+  }
+  
+  .subtitle {
+    font-size: 11px;
+    margin-bottom: 12px;
+  }
+  
+  .searchInput {
+    padding: 6px 30px 6px 10px;
+    font-size: 11px;
+  }
+  
+  .searchIcon {
+    font-size: 10px;
+    right: 8px;
+  }
+  
+  .tableHeader,
+  .row {
+    grid-template-columns: 25px 60px 40px 45px 30px;
+    font-size: 11px;
+  }
+  
+  .toggleButton {
+    width: 20px;
+    height: 20px;
+    font-size: 14px;
+  }
+  
+  .aiButton {
+    padding: 1px 4px;
+    font-size: 10px;
+  }
+  
+  .aiReportSection {
+    margin: 3px 0 8px;
+  }
+  
+  .aiReportHeader {
+    padding: 8px 12px;
+  }
+  
+  .aiReportTitle {
+    font-size: 11px;
+  }
+  
+  .aiReportContent {
+    padding: 12px;
+    max-height: 150px;
+  }
+  
+  .reportText {
+    font-size: 10px;
+  }
+  
+  .emptyState {
+    padding: 30px 15px;
+  }
+  
+  .emptyIcon {
+    font-size: 20px;
+  }
+  
+  .emptyText {
+    font-size: 12px;
+  }
+  
+  .emptySubtext {
+    font-size: 11px;
+  }
+}

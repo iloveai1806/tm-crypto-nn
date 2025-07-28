@@ -1,0 +1,196 @@
+.popup {
+  position: fixed;
+  width: 400px;
+  max-height: 300px;
+  background: rgba(0, 0, 0, 0.95);
+  border: 2px solid #578bfa;
+  border-radius: 12px;
+  padding: 20px;
+  z-index: 1000;
+  animation: fadeInUp 0.3s ease-out;
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.8),
+    0 0 20px rgba(87, 139, 250, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(87, 139, 250, 0.3);
+}
+
+.tokenInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.symbol {
+  font-size: 18px;
+  font-weight: bold;
+  color: #FFCF30;
+  font-family: 'Courier New', monospace;
+}
+
+.grade {
+  font-size: 12px;
+  color: #578bfa;
+  font-family: 'Courier New', monospace;
+}
+
+.closeBtn {
+  background: none;
+  border: none;
+  color: #578bfa;
+  font-size: 20px;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.closeBtn:hover {
+  background: rgba(87, 139, 250, 0.2);
+  transform: rotate(90deg);
+}
+
+.content {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.content::-webkit-scrollbar {
+  width: 4px;
+}
+
+.content::-webkit-scrollbar-track {
+  background: rgba(87, 139, 250, 0.1);
+}
+
+.content::-webkit-scrollbar-thumb {
+  background: rgba(87, 139, 250, 0.3);
+  border-radius: 2px;
+}
+
+.aiTitle {
+  font-size: 14px;
+  color: #FFCF30;
+  margin-bottom: 10px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.cursor {
+  animation: blink 1s infinite;
+  color: #FFCF30;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.aiText {
+  color: #fff;
+  font-size: 13px;
+  line-height: 1.5;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  word-wrap: break-word;
+}
+
+.aiText h1, .aiText h2, .aiText h3 {
+  color: #FFCF30;
+  margin: 0.8rem 0 0.4rem 0;
+  font-weight: 600;
+}
+
+.aiText h1 {
+  font-size: 1.1rem;
+  border-bottom: 1px solid rgba(87, 139, 250, 0.3);
+  padding-bottom: 0.3rem;
+}
+
+.aiText h2 {
+  font-size: 1rem;
+  color: #578bfa;
+}
+
+.aiText h3 {
+  font-size: 0.9rem;
+}
+
+.aiText p {
+  margin: 0.5rem 0;
+}
+
+.aiText ul, .aiText ol {
+  margin: 0.5rem 0;
+  padding-left: 1.2rem;
+}
+
+.aiText li {
+  margin: 0.3rem 0;
+}
+
+.aiText strong {
+  color: #FFCF30;
+  font-weight: 600;
+}
+
+.aiText code {
+  background: rgba(87, 139, 250, 0.1);
+  color: #578bfa;
+  padding: 0.1rem 0.3rem;
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+
+.typingCursor {
+  color: #FFCF30;
+  animation: blink 0.5s infinite;
+  font-weight: bold;
+}
+
+.footer {
+  margin-top: 15px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(87, 139, 250, 0.2);
+  text-align: center;
+}
+
+.clickHint {
+  font-size: 11px;
+  color: #666;
+  font-style: italic;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .popup {
+    width: 90vw;
+    max-width: 350px;
+    left: 5vw !important;
+    top: 20px !important;
+  }
+}

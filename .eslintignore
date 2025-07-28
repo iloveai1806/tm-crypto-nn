@@ -1,0 +1,7 @@
+# Exclude the coinbase-agentkit submodule from linting
+lib/coinbase-agentkit/
+
+# Standard Next.js excludes
+.next/
+out/
+node_modules/ 

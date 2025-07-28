@@ -1,0 +1,231 @@
+.pricingSection {
+  padding: 3rem 1.5rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 20px;
+  margin: 2rem 0;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(87, 139, 250, 0.1);
+}
+
+.pricingSection h2 {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  font-size: 2.2rem;
+  background: linear-gradient(135deg, #578bfa, #FFCF30);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.pricingGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.pricingCard {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(87, 139, 250, 0.02) 100%);
+  border-radius: 16px;
+  padding: 2rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(20px);
+  will-change: transform;
+}
+
+.pricingCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #578bfa 0%, #FFCF30 100%);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.pricingCard:hover::before {
+  opacity: 1;
+}
+
+.pricingCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(87, 139, 250, 0.15);
+}
+
+.tierName {
+  font-size: 1.4rem;
+  margin-bottom: 0.8rem;
+  color: #fff;
+  font-weight: 600;
+  text-align: center;
+}
+
+.price {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 0.3rem;
+  color: #578bfa;
+  text-align: center;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.description {
+  font-size: 0.85rem;
+  color: #FFCF30;
+  margin-bottom: 1.8rem;
+  opacity: 0.9;
+  text-align: center;
+  font-weight: 500;
+}
+
+.endpointList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 280px;
+  overflow-y: auto;
+}
+
+.endpointList::-webkit-scrollbar {
+  width: 4px;
+}
+
+.endpointList::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 2px;
+}
+
+.endpointList::-webkit-scrollbar-thumb {
+  background: rgba(87, 139, 250, 0.3);
+  border-radius: 2px;
+}
+
+.endpointList::-webkit-scrollbar-thumb:hover {
+  background: rgba(87, 139, 250, 0.5);
+}
+
+.endpointList li {
+  padding: 0.8rem 1rem;
+  margin-bottom: 0.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.85rem;
+  font-family: 'JetBrains Mono', monospace;
+  transition: transform 0.15s ease, background-color 0.15s ease;
+  position: relative;
+  overflow: hidden;
+  will-change: transform;
+}
+
+.endpointList li::before {
+  content: '▶';
+  position: absolute;
+  left: 0.5rem;
+  color: #578bfa;
+  font-size: 0.6rem;
+  opacity: 0.7;
+}
+
+.endpointList li {
+  padding-left: 1.8rem;
+}
+
+.endpointList li:hover {
+  background: rgba(87, 139, 250, 0.08);
+  border-color: rgba(87, 139, 250, 0.2);
+  color: rgba(255, 255, 255, 0.95);
+  transform: translateX(3px);
+}
+
+.endpointList li:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 1200px) {
+  .pricingGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+  }
+  
+  .pricingCard {
+    padding: 1.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .pricingGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .pricingSection {
+    padding: 2rem 1rem;
+    margin: 1rem 0;
+  }
+  
+  .pricingSection h2 {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+  }
+  
+  .pricingCard {
+    padding: 1.5rem;
+  }
+  
+  .tierName {
+    font-size: 1.2rem;
+    margin-bottom: 0.6rem;
+  }
+  
+  .price {
+    font-size: 1.5rem;
+  }
+  
+  .description {
+    font-size: 0.8rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .endpointList {
+    max-height: 200px;
+  }
+  
+  .endpointList li {
+    padding: 0.7rem 0.8rem;
+    font-size: 0.8rem;
+    padding-left: 1.6rem;
+  }
+  
+  .endpointList li::before {
+    font-size: 0.5rem;
+    left: 0.4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .pricingSection {
+    padding: 1.5rem 0.8rem;
+  }
+  
+  .pricingCard {
+    padding: 1.2rem;
+  }
+  
+  .pricingSection h2 {
+    font-size: 1.6rem;
+  }
+  
+  .endpointList {
+    max-height: 180px;
+  }
+}
